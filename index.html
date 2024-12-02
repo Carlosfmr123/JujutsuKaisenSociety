@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jujutsu Kaisen - Personagens</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style3.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 60px;
+            color: #ff3d00;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(255, 61, 0, 0.7);
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+            padding: 10px;
+            border-radius: 10px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.7);
+        }
+        h2 {
+            font-size: 1.5rem;
+            text-align: center;
+            color: #e0e0e0;
+            margin-top: 30px;
+        }
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: red;
+            margin: 5px 0;
+        }
+        .side-menu {
+            position: fixed;
+            left: -100%;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 30px;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .side-menu.open {
+            left: 0;
+        }
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .creator-button {
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.4);
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(23, 0, 235, 0.8));
+            padding: 10px;
+            border-radius: 10px;
+            width: fit-content;
+            margin-bottom: 20px; /* Adiciona espaço entre o botão do criador e os outros botões */
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.7);
+        }
+        .creator-button:hover {
+            background: linear-gradient(to right, #a8dadc, #457b9d);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; /* Permite que os botões se ajustem em várias linhas */
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .custom-button, .custom1-button, .custom2-button, .custom3-button, .trailer-button, .quiz-button, .forms-button, .Shibuya-button, .video-button {
+            width: 200px; /* Ajusta a largura dos botões */
+            height: 200px; /* Ajusta a altura dos botões */
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px; /* Adiciona espaço entre os botões */
+        }
+        .custom-button {
+    background-image: url('gojo.jpg');
+}
+.custom1-button {
+    background-image: url('sukuna.jpg');
+}
+.custom2-button {
+    background-image: url('kenjaku.jpg');
+}
+.custom3-button {
+    background-image: url('toji.jpeg');
+}
+.trailer-button {
+    background-image: url('trailer.webp');
+}
+.forms-button {
+    background-image: url('forms.jpg');
+}
+.Shibuya-button {
+    background-image: url('shibuya.webp');
+}
+.video-button {
+    background-image: url('video.jpg');
+}
+.homenagem-button {
+    background-image: url('gojomemory2.png');
+}
+.quiz-button{
+    background-image: url('akira.jpg');
+}
+        .custom-button:hover, .custom1-button:hover, .custom2-button:hover, .custom3-button:hover, .trailer-button:hover, .quiz-button:hover, .forms-button:hover, .Shibuya-button:hover, .video-button:hover, .homenagem-button:hover  {
+            transform: scale(1.1);
+        }
+        footer {
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 1.2rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+        footer.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jujutsu Kaisen Society</h1>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <h2>Bem-vindo ao Jujutsu Kaisen Society, o seu portal definitivo para tudo relacionado ao universo de "Jujutsu Kaisen"! Explore os personagens e histórias que fazem parte desta incrível obra.</h2>
+
+    <nav id="side-menu" class="side-menu">
+        <button class="close-button" onclick="toggleMenu()">×</button>
+        <button class="creator-button" onclick="window.location.href='gegeakutami.html';">Informações sobre o Criador</button>
+        <div class="button-container">
+            <button class="custom-button" onclick="window.location.href='satoru-gojo.html';" title="Satoru Gojo"></button>
+            <button class="custom1-button" onclick="window.location.href='ryomen-sukuna.html';" title="Ryomen Sukuna"></ button>
+            <button class="custom2-button" onclick="window.location.href='kenjaku.html';" title="Kenjaku"></button>
+            <button class="custom3-button" onclick="window.location.href='uraume.html';" title="Uraume"></button>
+            <button class="trailer-button" onclick="window.open('https://youtu.be/9OhV3IWUsxE?si=FL-lKVvvjfHghcj-', '_blank')" title="Trailer"></button>
+            <button class="quiz-button" onclick="window.location.href='homenagemakiratoriyama.html';" title="Akira"></button>
+            <button class="Shibuya-button" onclick="window.location.href='Shibuya.html';" title="Shibuya"></button> 
+            <button class="homenagem-button" onclick="window.location.href='homenagem.html';" title="Homenagem"></button>
+            <button class="video-button" onclick="window.location.href='video.html';" title="Vídeo"></button>
+            <button class="forms-button" onclick="window.location.href='forms.html';" title="Última Página"></button>
+           
+        </div>
+    </nav>
+
+    <audio id="musica-fundo" loop>
+        <source src="Skyfall.mp3" type="audio/mp3">
+    </audio>
+    <button id="play-pause">Tocar Música</button>
+
+    <footer id="footer">
+        <p>Homenagem feita por um fã de Jujutsu Kaisen | <a href="https://www.viz.com/jujutsu-kaisen">Saiba mais sobre Jujutsu Kaisen</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const sideMenu = document.getElementById("side-menu");
+            sideMenu.classList.toggle("open");
+           
+            const footer = document.getElementById('footer');
+            footer.classList.toggle('hidden'); 
+        }
+        
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const musica = document.getElementById("musica-fundo");
+            const playPauseButton = document.getElementById("play-pause");
+
+            playPauseButton.textContent = "Tocar Música";
+            musica.pause();
+
+            playPauseButton.addEventListener("click", function() {
+                if (musica.paused) {
+                    musica.play();
+                    playPauseButton.textContent = "Pausar Música";
+                } else {    
+                    musica.pause();
+                    playPauseButton.textContent = "Tocar Música";
+                }
+            });
+        });
+        
+            
+    </script>
+</body>
+</html>  

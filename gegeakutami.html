@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gege Akutami</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        footer {
+    background-color: black;
+}
+
+footer a {
+    color: white;
+}
+
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #0a56b7;
+            --highlight-color: yellow;
+            --text-color: #f4f4f4;
+            --bg-color: #1e1e1e;
+            --footer-bg-color: #1a73e8;
+            --footer-text-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: rgba(42, 26, 94, 0.8); /* Roxo escuro com transparência */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #ff3d00; /* Vermelho vibrante */
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(255, 61, 0, 0.7);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .highlight {
+            background-color: var(--highlight-color);
+            color: black;
+            padding: 0 4px;
+        }
+
+        #navbar {
+            background-color: var(--primary-color);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #barra-pesquisa {
+            display: flex;
+            align-items: center;
+        }
+
+        #input-pesquisa {
+            padding: 8px;
+            font-size: 18px;
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #botao-pesquisa {
+            padding: 8px 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #botao-pesquisa:hover {
+            background-color: var(--primary-color);
+        }
+
+        .center {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .center img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .sketchfab-embed-wrapper iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border-radius: 8px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 6px solid var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .voltar {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .voltar a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .voltar a:hover {
+            color: var(--secondary-color);
+        }
+
+        .databook {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .databook a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .databook a:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            #input-pesquisa {
+                width: 200px;
+            }
+
+            .sketchfab-embed-wrapper iframe {
+                height: 450px;
+            }
+
+            .center img {
+                max-width: 90%;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }.menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: red;
+            margin: 5px 0;
+        }
+        .side-menu {
+            position: fixed;
+            left: -100%;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 30px;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .side-menu.open {
+            left: 0;
+        }
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .creator-button {
+                font-size: 40px;
+                color: #fff;
+                text-align: center;
+                margin-top: 20px;
+                text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.4);
+                font-family: 'Arial Black', sans-serif;
+                background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(23, 0, 235, 0.8));
+                padding: 10px;
+                border-radius: 10px;
+                width: fit-content;
+                margin-bottom: 20px; /* Adiciona espaço entre o botão do criador e os outros botões */
+                box-shadow: 0 4px 15px rgba(255, 0, 0, 0.7);
+            }
+            .creator-button:hover {
+                background: linear-gradient(to right, #a8dadc, #457b9d);
+                transform: scale(1.1);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            }
+            .button-container {
+                display: flex;
+                flex-wrap: wrap; /* Permite que os botões se ajustem em várias linhas */
+                justify-content: center;
+                margin-top: 20px;
+            }
+            .custom-button, .custom1-button, .custom2-button, .custom3-button, .trailer-button, .quiz-button, .forms-button, .Shibuya-button, .video-button {
+                width: 200px; /* Ajusta a largura dos botões */
+                height: 200px; /* Ajusta a altura dos botões */
+                background-size: cover;
+                background-position: center;
+                border: 2px solid #333;
+                border-radius: 5px;
+                cursor: pointer;
+                outline: none;
+                transition: transform 0.2s, box-shadow 0.2s;
+                margin: 10px; /* Adiciona espaço entre os botões */
+            }
+            .custom-button {
+                background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ba01a7f8-b184-415e-ae27-da8adda364d8/dg3mhs8-591e7ed6-a102-44ab-a8c6-eae2de3e1dc7.png/v1/fill/w_512,h_512,q_80,strp/satoru___gojo_jujutsu_kaisen_manga_by_hellyson_dg3mhs8-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTEyIiwicGF0aCI6IlwvZlwvYmEwMWE3ZjgtYjE4NC00MTVlLWFlMjctZGE4YWRkYTM2NGQ4XC9kZzNtaHM4LTU5MWU3ZWQ2LWExMDItNDRhYi1hOGM2LWVhZTJkZTNlMWRjNy5wbmciLCJ3aWR0aCI6Ijw9NTEyIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.n3jidiXZ0TilCSe8IAWLWu2Fb3V-gVf8WSOTuoqc1AE');
+            }
+            .custom1-button {
+                background-image: url('https://i.pinimg.com/736x/b8/11/76/b8117658a94a5509fd52d7dbaa278246.jpg');
+            }
+            .custom2-button {
+                background-image: url('https://i1.sndcdn.com/artworks-47N3MnJTYyiEllHs-mHrkqQ-t500x500.jpg');
+            }
+            .custom3-button {
+                background-image: url('https://avatarfiles.alphacoders.com/375/thumb-1920-375449.jpeg');
+            }
+            .trailer-button {
+                background-image: url('https://a.storyblok.com/f/178900/800x1200/3e8f29fc38/jujutsukaisen_s2_base_assets_2x3_2000x3000-1.png/m/filters:quality(95)format(webp)');
+            }
+            .quiz-button {
+                background-image: url('https://pt.quizur.com/_image?href=https://img.quizur.com/f/img63796da83100b7.75388587.jpeg?lastEdited=1668902319&w=600&h=600&f=webp');
+            }
+            .forms-button {
+                background-image: url('https://wallpapers.com/images/hd/jujutsu-kaisen-desktop-1a3i439pyjypjw17.jpg');
+            }
+            .Shibuya-button {
+                background-image: url('https://preview.redd.it/jujutsu-kaisen-promotion-recently-in-shibuya-station-v0-nrmn146s3d7c1.jpg?width=1080&crop=smart&auto=webp&s=e3c8594135eeaa16930a700cb71a6309d6f68d24');
+            }
+            .video-button { 
+                background-image: url('https://i.ytimg.com/vi/dWfEadR11AA/maxresdefault.jpg');
+            }
+            .homenagem-button {
+                background-image: url('gojomemory2.png');
+            }
+            .custom-button:hover, .custom1-button:hover, .custom2-button:hover, .custom3-button:hover, .trailer-button:hover, .quiz-button:hover, .forms-button:hover, .Shibuya-button:hover, .video-button:hover, .homenagem-button:hover  {
+                transform: scale(1.1);
+            }
+
+        </style>
+    </head>
+    <body> <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="side-menu" class="side-menu">
+        <button class="close-button" onclick="toggleMenu()">×</button>
+        <button class="creator-button" onclick="window.location.href='gegeakutami.html';">Informações sobre o Criador</button>
+        <div class="button-container">
+            <button class="custom-button" onclick="window.location.href='satoru-gojo.html';" title="Satoru Gojo"></button>
+            <button class="custom1-button" onclick="window.location.href='ryomen-sukuna.html';" title="Ryomen Sukuna"></ button>
+            <button class="custom2-button" onclick="window.location.href='kenjaku.html';" title="Kenjaku"></button>
+            <button class="custom3-button" onclick="window.location.href='uraume.html';" title="Uraume"></button>
+            <button class="trailer-button" onclick="window.open('https://youtu.be/9OhV3IWUsxE?si=FL-lKVvvjfHghcj-', '_blank')" title="Trailer"></button>
+            <button class="quiz-button" onclick="window.location.href='homenagemakiratoriyama.html';" title="Akira"></button>
+            <button class="Shibuya-button" onclick="window.location.href='Shibuya.html';" title="Shibuya"></button> 
+            <button class="homenagem-button" onclick="window.location.href='homenagem.html';" title="Homenagem"></button>
+            <button class="video-button" onclick="window.location.href='video.html';" title="Vídeo"></button>
+            <button class="forms-button" onclick="window.location.href='forms.html';" title="Última Página"></button>
+        
+        </div>
+    </nav>
+
+        <div id="content">
+            <h1>O gato maldito</h1>
+            <p>Gege Akutami é o mangaká japonês responsável por criar Jujutsu Kaisen, uma das séries de mangá e anime mais populares dos últimos anos. Nascido em 1992 na cidade de Iwate, Japão, Akutami é notavelmente reservado sobre a sua vida pessoal e prefere manter-se fora dos holofotes, aparecendo raramente em público e usando um avatar representado por um boneco.</p>
+
+            <div style="text-align: center;">
+                <img id="img1" src="data:image/jpeg;base64,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" alt="Imagem do gato maldito">
+                <p></p>
+            </div>
+            <hr size="6" color="whitesmoke" width="100%">
+            <h1>O início da sua carreira</h1>
+            <p><strong>Akutami</strong> iniciou a sua carreira de forma profissional com algumas histórias curtas publicadas na revista Shonen Jump. Em 2017, ele lançou a história Tokyo Metropolitan Curse Technical School, um mangá que, devido ao sucesso, foi expandido e renomeado como Jujutsu Kaisen. A história acompanha Yuji Itadori e outros personagens que lutam contra "maldições" utilizando técnicas de exorcismo num universo onde forças sobrenaturais se misturam com a vida quotidiana.</p>
+            
+            <img id="img2" src="https://ovicio.com.br/wp-content/uploads/2024/07/20240711-jujutsu-kaisen-hiatus-gege-akutami.jpg" alt="Imagem de Jujutsu Kaisen">
+            
+            <p>
+                <a href="https://en.wikipedia.org/wiki/Gege_Akutami" target="_blank">Wiki do Autor</a>
+            </p>
+            <p>
+                <hr size="5" color="whitesmoke" width="100%">
+            </p>
+            
+            <div class="voltar">
+                <footer>
+                <a href="index.html" color="white">Voltar à Página Inicial</a>
+                </footer>
+            </div>
+        </div>
+
+        <script>
+        
+            function toggleMenu() {
+                const sideMenu = document.getElementById("side-menu");
+                sideMenu.classList.toggle("open");
+
+            }
+        </script>
+    </body>
+    </html>
