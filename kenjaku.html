@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenjaku</title>
+    <!-- Links para as folhas de estilo -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="3dmodel.css">
+    <link rel="stylesheet" href="style3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos do rodapé */
+        footer {
+            background-color: black;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        /* Variáveis CSS para cores */
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #0a56b7;
+            --highlight-color: yellow;
+            --text-color: #f4f4f4;
+            --bg-color: #1e1e1e;
+            --footer-bg-color: #1a73e8;
+            --footer-text-color: #ffffff;
+        }
+
+        /* Estilos do corpo da página */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Estilos do cabeçalho */
+        header {
+            background-color: rgba(42, 26, 94, 0.8); /* Roxo escuro com transparência */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Estilos do título principal */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #ff3d00; /* Vermelho vibrante */
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(255, 61, 0, 0.7);
+        }
+
+        /* Estilos do parágrafo */
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Estilos para links ao passar o mouse */
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Estilos para destaque de texto */
+        .highlight {
+            background-color: var(--highlight-color);
+            color: black;
+            padding: 0 4px;
+        }
+
+        /* Estilos da barra de navegação */
+        #navbar {
+            background-color: var(--primary-color);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos da barra de pesquisa */
+        #barra-pesquisa {
+            display: flex;
+            align-items: center;
+        }
+
+        #input-pesquisa {
+            padding: 8px;
+            font-size: 18px;
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #botao-pesquisa {
+            padding: 8px 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #botao-pesquisa:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Estilos para centralização */
+        .center {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Estilos para imagens centralizadas */
+        .center img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Estilos do iframe para o modelo 3D */
+        .sketchfab-embed-wrapper iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border-radius: 8px;
+        }
+
+        /* Estilos para a linha horizontal */
+        hr {
+            border: 0;
+            border-top: 6px solid var(--primary-color);
+            margin: 20px 0;
+        }
+
+        /* Estilos do botão de voltar */
+        .voltar {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .voltar a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .voltar a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Estilos para o databook */
+        .databook {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .databook a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .databook a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            #input-pesquisa {
+                width: 200px;
+            }
+
+            .sketchfab-embed-wrapper iframe {
+                height: 450px;
+            }
+
+            .center img {
+                max-width: 90%;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Estilos do ícone do menu */
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: red;
+            margin: 5px 0;
+        }
+
+        /* Estilos do menu lateral */
+        .side-menu {
+            position: fixed;
+            left: -100%;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 30px;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .side-menu.open {
+            left: 0; /* Abre o menu lateral */
+        }
+
+        /* Estilos do botão de fechar */
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Estilos do botão do criador */
+        .creator-button {
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.4);
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(23, 0, 235, 0.8));
+            padding: 10px;
+            border-radius: 10px;
+            width: fit-content;
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.7);
+        }
+
+        /* Estilos do contêiner de botões */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Estilos do botão de homenagem */
+        .homenagem-button {
+            background-image: url('gojomemory2.png');
+        }
+
+        /* Estilos dos botões personalizados */
+        .custom-button, .homenagem-button, .custom1-button, .custom2-button, .custom3-button, .trailer-button, .quiz-button, .forms-button, .Shibuya-button, .video-button {
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px;
+        }
+
+        /* Efeito de hover nos botões */
+        .custom-button:hover, .custom1-button:hover, .custom2-button:hover, .custom3-button:hover, .trailer-button:hover, .quiz-button:hover, .forms-button:hover, .Shibuya-button:hover, .video-button:hover {
+            transform: scale(1.1); /* Aumenta o tamanho do botão ao passar o mouse */
+        }
+        .custom-button {
+    background-image: url('gojo.jpg');
+}
+        .custom1-button {
+    background-image: url('sukuna.jpg');
+}
+.custom2-button {
+    background-image: url('kenjaku.jpg');
+}
+.custom3-button {
+    background-image: url('toji.jpeg');
+}
+.trailer-button {
+    background-image: url('trailer.webp');
+}
+.forms-button {
+    background-image: url('forms.jpg');
+}
+.Shibuya-button {
+    background-image: url('shibuya.webp');
+}
+.video-button {
+    background-image: url('video.jpg');
+}
+.homenagem-button {
+    background-image: url('gojomemory2.png');
+}
+.quiz-button{
+    background-image: url('akira.jpg');
+}
+    </style>
+</head>
+<body>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="side-menu" class="side-menu">
+        <button class="close-button" onclick="toggleMenu()">×</button>
+        <button class="creator-button" onclick="window.location.href='gegeakutami.html';">Informações sobre o Criador</button>
+        <div class="button-container">
+            <button class="custom-button" onclick="window.location.href='satoru-gojo.html';" title="Satoru Gojo"></button>
+            <button class="custom1-button" onclick="window.location.href='ryomen-sukuna.html';" title="Ryomen Sukuna"></button>
+            <button class="custom2-button" onclick="window.location.href='kenjaku.html';" title="Kenjaku"></button>
+            <button class="custom3-button" onclick="window.location.href='uraume.html';" title="Uraume"></button>
+            <button class="trailer-button" onclick="window.open('https://youtu.be/9OhV3IWUsxE?si=FL-lKVvvjfHghcj-', '_blank')" title="Trailer"></button>
+            <button class="quiz-button" onclick="window.location.href='homenagemakiratoriyama.html';" title="Akira"></button>
+            <button class="Shibuya-button" onclick="window.location.href='Shibuya.html';" title="Shibuya"></button>
+            <button class="homenagem-button" onclick="window.location.href='homenagem.html';" title="Homenagem"></button>
+            <button class="video-button" onclick="window.location.href='video.html';" title="Vídeo"></button>
+            <button class="forms-button" onclick="window.location.href='forms.html';" title="Última Página"></button>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Kenjaku(Suguru Geto)</h1>
+    </header>
+
+    <div id="navbar">
+        <span></span>
+        <div id="barra-pesquisa">
+            <input type="text" id="input-pesquisa" placeholder="Procurar na página">
+            <button id="botao-pesquisa">Procurar</button>
+        </div>
+    </div>
+
+    <div id="content">
+        <h1><strong>Kenjaku</strong></h1>
+        <p><strong>Kenjaku</strong> é um dos principais vilões de <strong>Jujutsu Kaisen</strong>, um antigo feiticeiro que possui a habilidade de transplantar o seu cérebro em diferentes corpos, vivendo por séculos. Ele esteve por trás de vários eventos importantes, incluindo a manipulação de eventos históricos e o uso do corpo de Suguru Geto para os seus próprios planos. Kenjaku busca evoluir a humanidade através da energia amaldiçoada, sendo um estrategista frio e calculista.</p>
+
+        <div class="center">
+            <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/09/playing-with-the-death-jujutsu-kaisen.jpg" alt="Kenjaku no corpo de Geto">
+        </div>
+        
+        <hr class="styled-hr">
+
+        <h1><strong>Pós Morte</strong></h1>
+        <p><strong>Kenjaku</strong> é morto por Yuta Okkotsu após uma longa batalha contra Takaba. A morte de Kenjaku ocorre de forma sorrateira, sem que ele percebesse o golpe que o matou.</p>
+
+        <div class="center">
+            <img src="https://criticalhits.com.br/wp-content/uploads/2024/02/yuta-kills-kenjaku-takaba-dies-j.webp" alt="A Morte de Kenjaku">
+        </div>
+
+        <hr class="styled-hr">
+
+        <div class="sketchfab-embed-wrapper">
+            <iframe 
+                title="Geto(kenjaku)" 
+                frameborder="0" 
+                allowfullscreen 
+                mozallowfullscreen="true" 
+                webkitallowfullscreen="true" 
+                allow="autoplay; fullscreen; xr-spatial-tracking" 
+                xr-spatial-tracking 
+                execution-while-out-of-viewport 
+                execution-while-not-rendered 
+                web-share 
+                src="https://sketchfab.com/models/8b08506d411a44c58a815cf36362a7d5/embed"
+                width="800" 
+                height="600">
+            </iframe>
+        </div>
+
+        <p><a href="https://myanimelist.net/character/196089/Kenjaku" target="_blank">Databook de Kenjaku</a></p>
+        
+        <hr class="styled-hr">
+    </div>
+
+    <div class="voltar">
+        <footer>
+            <a href="index.html" color="white">Voltar à Página Inicial</a>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona evento ao botão de pesquisa
+        document.getElementById("botao-pesquisa").addEventListener("click", function() {
+            // Remove qualquer destaque anterior
+            const highlightedElements = document.querySelectorAll(".highlight");
+            highlightedElements.forEach(element => {
+                element.classList.remove("highlight");
+            });
+
+            const searchTerm = document.getElementById("input-pesquisa").value.toLowerCase();
+
+            if (searchTerm.trim() === "") {
+                alert("Por favor, insira uma palavra para pesquisar.");
+                return;
+            }
+
+            // Seleciona todos os elementos de texto na página
+            const allElements = document.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, a, li");
+
+            let found = false;
+
+            // Itera e verifica os elementos
+            allElements.forEach(element => {
+                const text = element.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    element.classList.add("highlight");
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert("Nenhuma correspondência encontrada.");
+            }
+        });
+        function toggleMenu() {
+            const menu = document.querySelector(".side-menu");
+            const navbar = document.getElementById("navbar");
+            menu.classList.toggle("open");
+
+            if (menu.classList.contains("open")) {
+                navbar.style.opacity = "0"; // Oculta a navbar
+                navbar.style.visibility = "hidden";
+            } else {
+                navbar.style.opacity = "1"; // Reexibe a navbar
+                navbar.style.visibility = "visible";
+            }
+        }
+    </script>
+</body>
+</html>

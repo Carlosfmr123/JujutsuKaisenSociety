@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryomen Sukuna</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="3dmodel.css">
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        /* Estilos do rodapé */
+       footer {
+            background-color: black;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        /* Definição de variáveis de cores */
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #0a56b7;
+            --highlight-color: yellow;
+            --text-color: #f4f4f4;
+            --bg-color: #1e1e1e;
+            --footer-bg-color: #1a73e8;
+            --footer-text-color: #ffffff;
+        }
+
+        /* Estilos do corpo da página */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Estilos do cabeçalho */
+        header {
+            background-color: rgba(42, 26, 94, 0.8);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #ff3d00;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(255, 61, 0, 0.7);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .highlight {
+            background-color: var(--highlight-color);
+            color: black;
+            padding: 0 4px;
+        }
+
+        /* Barra de navegação */
+        #navbar {
+            background-color: var(--primary-color);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #barra-pesquisa {
+            display: flex;
+            align-items: center;
+        }
+
+        #input-pesquisa {
+            padding: 8px;
+            font-size: 18px;
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #botao-pesquisa {
+            padding: 8px 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #botao-pesquisa:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Menu lateral */
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: red;
+            margin: 5px 0;
+        }
+
+        .side-menu {
+            position: fixed;
+            left: -100%;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 30px;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .custom-button, .homenagem-button, .custom1-button, .custom2-button, .custom3-button, .trailer-button, .quiz-button, .forms-button, .Shibuya-button, .video-button {
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px;
+        }
+        .creator-button {
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.4);
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(23, 0, 235, 0.8));
+            padding: 10px;
+            border-radius: 10px;
+            width: fit-content;
+            margin-bottom: 20px; /* Adiciona espaço entre o botão do criador e os outros botões */
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.7);
+        }
+        .creator-button:hover {
+            background: linear-gradient(to right, #a8dadc, #457b9d);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .custom-button { background-image: url('gojo.jpg'); }
+        .custom1-button { background-image: url('sukuna.jpg'); }
+        .custom2-button { background-image: url('kenjaku.jpg'); }
+        .custom3-button { background-image: url('toji.jpeg'); }
+        .trailer-button { background-image: url('trailer.webp'); }
+        .forms-button { background-image: url('forms.jpg'); }
+        .Shibuya-button { background-image: url('shibuya.webp'); }
+        .video-button { background-image: url('video.jpg'); }
+        .homenagem-button { background-image: url('gojomemory2.png'); }
+        .quiz-button { background-image: url('akira.jpg'); }
+    </style>
+</head>
+<body>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="side-menu" class="side-menu">
+        <button class="close-button" onclick="toggleMenu()">×</button>
+        <button class="creator-button" onclick="window.location.href='gegeakutami.html';">Informações sobre o Criador</button>
+        <div class="button-container">
+            <button class="custom-button" onclick="window.location.href='satoru-gojo.html';" title="Satoru Gojo"></button>
+            <button class="custom1-button" onclick="window.location.href='ryomen-sukuna.html';" title="Ryomen Sukuna"></button>
+            <button class="custom2-button" onclick="window.location.href='kenjaku.html';" title="Kenjaku"></button>
+            <button class="custom3-button" onclick="window.location.href='uraume.html';" title="Uraume"></button>
+            <button class="trailer-button" onclick="window.open('https://youtu.be/9OhV3IWUsxE?si=FL-lKVvvjfHghcj-', '_blank')" title="Trailer"></button>
+            <button class="quiz-button" onclick="window.location.href='homenagemakiratoriyama.html';" title="Akira"></button>
+            <button class="Shibuya-button" onclick="window.location.href='Shibuya.html';" title="Shibuya"></button>
+            <button class="homenagem-button" onclick="window.location.href='homenagem.html';" title="Homenagem"></button>
+            <button class="video-button" onclick="window.location.href='video.html';" title="Vídeo"></button>
+            <button class="forms-button" onclick="window.location.href='forms.html';" title="Última Página"></button>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Ryomen-sukuna</h1>
+    </header>
+
+    <div id="navbar">
+        <span></span>
+        <div id="barra-pesquisa">
+            <input type="text" id="input-pesquisa" placeholder="Procurar na página">
+            <button id="botao-pesquisa">Procurar</button>
+        </div>
+    </div>
+
+    <div id="content">
+        <section>
+            <h1>O Rei</h1>
+            <p><strong>Ryomen Sukuna</strong>, o "Rei das Maldições", é um feiticeiro jujutsu do passado tão forte como Satoru Gojo em <strong>Jujutsu Kaisen</strong>. Originalmente um feiticeiro humano da era Heian, Sukuna era extremamente poderoso e cruel, aterrorizando o mundo com as suas habilidades. Após a sua morte, o seu corpo foi dividido em 20 dedos amaldiçoados, que contêm uma fração da sua imensa energia. Mesmo após a sua morte, Sukuna permanece como uma ameaça significativa, pois o seu espírito amaldiçoado pode ser ressuscitado se os seus dedos forem consumidos. Isto acontece quando Yuji Itadori, o protagonista, ingere um dos dedos de Sukuna, permitindo que Sukuna partilhe o corpo de Yuji. Embora morto no passado, Sukuna ainda exerce grande influência na história, lutando para retomar o seu poder completo e voltar à vida.</p>
+        </section>
+
+        <section>
+            <div style="text-align: center;">
+                <img src="https://i.pinimg.com/originals/3c/b2/a2/3cb2a29b975bc0600a9cd52e182c81c0.jpg" alt="Ryomen Sukuna">
+                <p>O rei das maldições no seu corpo original</p>
+            </div>
+        </section>
+
+        <section>
+            <h1>Pós Morte</h1>
+            <p><strong>Ryomen Sukuna</strong> Depois de morrer, Ryomen Sukuna é recebido no inferno por Mahito. Após ser ressuscitado pelos seus seguidores, torna-se a principal ameaça contra os jujutsu no mundo, enfrentando os feiticeiros mais fortes da nova geração.</p>
+
+            <div style="text-align: center;">
+                <img src="https://i.ytimg.com/vi/RxliOBSeQek/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBLr84rgTOg8qqczPbeOEXTygez0g" alt="Sukuna morto">
+                <p>Sukuna está morto</p>
+            </div>
+
+            <div class="sketchfab-embed-wrapper">
+                <iframe 
+                    title="Sukuna 3D model" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                    xr-spatial-tracking 
+                    execution-while-out-of-viewport 
+                    execution-while-not-rendered 
+                    web-share 
+                    src="https://sketchfab.com/models/0e5668f2dd9240c0a8892ab33f10d4b0/embed"
+                    width="800" 
+                    height="600">
+                </iframe>
+            </div>
+
+            <p><a href="https://myanimelist.net/character/175198/Sukuna_Ryoumen" target="_blank">Databook de Sukuna</a></p>
+        </section>
+
+        <div class="voltar">
+            <footer>
+                <a href="index.html" color="white">Voltar à Página Inicial</a>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("botao-p esquisa").addEventListener("click", function () {
+            const query = document.getElementById("input-pesquisa").value.toLowerCase().trim();
+            const contentElement = document.getElementById("content");
+
+            const highlighted = document.querySelectorAll(".highlight");
+            highlighted.forEach((el) => el.classList.remove("highlight"));
+
+            if (query) {
+                const contentText = contentElement.innerText.toLowerCase();
+                const index = contentText.indexOf(query);
+
+                if (index !== -1) {
+                    const words = contentElement.getElementsByTagName("p");
+                    for (let element of words) {
+                        const regex = new RegExp(query, "gi");
+                        element.innerHTML = element.innerHTML.replace(regex, (match) => {
+                            return `<span class="highlight">${match}</span>`;
+                        });
+                    }
+                } else {
+                    alert("Palavra não encontrada.");
+                }
+            }
+        });
+
+        function toggleMenu() {
+            const menu = document.querySelector(".side-menu");
+            const navbar = document.getElementById("navbar");
+            menu.classList.toggle("open");
+
+            if (menu.classList.contains("open")) {
+                navbar.style.opacity = "0"; 
+                navbar.style.visibility = "hidden";
+            } else {
+                navbar.style.opacity = "1"; 
+                navbar.style.visibility = "visible";
+            }
+        }
+    </script>
+
+</body>
+</html>
