@@ -105,7 +105,6 @@
             cursor: pointer;
             z-index: 2;
         }
-
         .menu-icon span {
             display: block;
             width: 100%;
@@ -113,14 +112,13 @@
             background-color: red;
             margin: 5px 0;
         }
-
         .side-menu {
             position: fixed;
             left: -100%;
             top: 0;
             height: 100%;
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.9);
             color: white;
             display: flex;
             flex-direction: column;
@@ -130,13 +128,10 @@
             transition: left 0.3s;
             padding: 20px;
             box-sizing: border-box;
-            z-index: 10;
         }
-
         .side-menu.open {
             left: 0;
         }
-
         .close-button {
             position: absolute;
             top: 20px;
@@ -146,19 +141,6 @@
             background: none;
             border: none;
             cursor: pointer;
-        }
-
-        .custom-button, .homenagem-button, .custom1-button, .custom2-button, .custom3-button, .trailer-button, .quiz-button, .forms-button, .Shibuya-button, .video-button {
-            width: 200px;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #333;
-            border-radius: 5px;
-            cursor: pointer;
-            outline: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin: 10px;
         }
         .creator-button {
             font-size: 40px;
@@ -179,17 +161,57 @@
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
-
-        .custom-button { background-image: url('gojo.jpg'); }
-        .custom1-button { background-image: url('sukuna.jpg'); }
-        .custom2-button { background-image: url('kenjaku.jpg'); }
-        .custom3-button { background-image: url('toji.jpeg'); }
-        .trailer-button { background-image: url('trailer.webp'); }
-        .forms-button { background-image: url('forms.jpg'); }
-        .Shibuya-button { background-image: url('shibuya.webp'); }
-        .video-button { background-image: url('video.jpg'); }
-        .homenagem-button { background-image: url('gojomemory2.png'); }
-        .quiz-button { background-image: url('akira.jpg'); }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; /* Permite que os botões se ajustem em várias linhas */
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .custom-button, .custom1-button, .custom2-button, .custom3-button, .trailer-button, .quiz-button, .forms-button, .Shibuya-button, .video-button {
+            width: 200px; /* Ajusta a largura dos botões */
+            height: 200px; /* Ajusta a altura dos botões */
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px; /* Adiciona espaço entre os botões */
+        }
+        .custom-button {
+    background-image: url('gojo.jpg');
+}
+.custom1-button {
+    background-image: url('sukuna.jpg');
+}
+.custom2-button {
+    background-image: url('kenjaku.jpg');
+}
+.custom3-button {
+    background-image: url('toji.jpeg');
+}
+.trailer-button {
+    background-image: url('trailer.webp');
+}
+.forms-button {
+    background-image: url('forms.jpg');
+}
+.Shibuya-button {
+    background-image: url('shibuya.webp');
+}
+.video-button {
+    background-image: url('video.jpg');
+}
+.homenagem-button {
+    background-image: url('gojomemory2.png');
+}
+.quiz-button{
+    background-image: url('akira.jpg');
+}
+        .custom-button:hover, .custom1-button:hover, .custom2-button:hover, .custom3-button:hover, .trailer-button:hover, .quiz-button:hover, .forms-button:hover, .Shibuya-button:hover, .video-button:hover, .homenagem-button:hover  {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
