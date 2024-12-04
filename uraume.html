@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uraume</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="3dmodel.css">
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        footer {
+            background-color: black;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #0a56b7;
+            --highlight-color: yellow;
+            --text-color: #f4f4f4;
+            --bg-color: #1e1e1e;
+            --footer-bg-color: #1a73e8;
+            --footer-text-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: rgba(42, 26, 94, 0.8);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #ff3d00;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(255, 61, 0, 0.7);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .highlight {
+    background-color: var(--highlight-color);
+    color: black;
+    padding: 0 4px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+        #navbar {
+            background-color: var(--primary-color);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #barra-pesquisa {
+            display: flex;
+            align-items: center;
+        }
+
+        #input-pesquisa {
+            padding: 8px;
+            font-size: 18px;
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #botao-pesquisa {
+            padding: 8px 16px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #botao-pesquisa:hover {
+            background-color: var(--primary-color);
+        }
+
+        .center {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .center img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .sketchfab-embed-wrapper iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border-radius: 8px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 6px solid var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .voltar {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .voltar a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .voltar a:hover {
+            color: var(--secondary-color);
+        }
+
+        .databook {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .databook a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .databook a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            #input-pesquisa {
+                width: 200px;
+            }
+
+            .sketchfab-embed-wrapper iframe {
+                height: 450px;
+            }
+
+            .center img {
+                max-width: 90%;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .menu-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: #ff3d00;
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+    .side-menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        width: 80%;
+        max-width: 300px;
+        background-color: #1c1c1c;
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: left 0.3s ease;
+        overflow-y: auto; /* Adicionado para rolagem */
+    }
+
+    .side-menu::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .side-menu::-webkit-scrollbar-thumb {
+        background-color: #ff3d00;
+        border-radius: 4px;
+    }
+
+    .side-menu::-webkit-scrollbar-thumb:hover {
+        background-color: #ff5722;
+    }
+
+    .side-menu::-webkit-scrollbar-track {
+        background: #1c1c1c;
+    }
+
+
+        .close-button {
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            align-self: flex-end;
+            margin-bottom: 20px;
+        }
+        .creator-button {
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(23, 0, 235, 0.8));
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.6);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .creator-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.8);
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .custom-button, .custom1-button, .custom2-button, .custom3-button, .trailer-button, .quiz-button, .forms-button, .Shibuya-button, .video-button, .homenagem-button {
+            width: 120px;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            margin: 10px;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .custom-button { background-image: url('gojo.jpg'); }
+        .custom1-button { background-image: url('sukuna.jpg'); }
+        .custom2-button { background-image: url('kenjaku.jpg'); }
+        .custom3-button { background-image: url('toji.jpeg'); }
+        .trailer-button { background-image: url('trailer.webp'); }
+        .quiz-button { background-image: url('akira.jpg'); }
+        .Shibuya-button { background-image: url('shibuya.webp'); }
+        .video-button { background-image: url('video.jpg'); }
+        .homenagem-button { background-image: url('gojomemory2.png'); }
+        .forms-button { background-image: url('forms.jpg'); }
+        .custom-button:hover, .custom1-button:hover, .custom2-button:hover, .custom3-button:hover, .trailer-button:hover, .quiz-button:hover, .forms-button:hover, .Shibuya-button:hover, .video-button:hover, .homenagem-button:hover {
+            transform: scale(1.1);
+            border-color: #ff3d00;
+        }
+    </style>
+</head>
+<body> 
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="side-menu" class="side-menu">
+        <button class="close-button" onclick="toggleMenu()">×</button>
+        <button class="creator-button" onclick="window.location.href='gegeakutami.html';">Informações sobre o Criador</button>
+        
+        <div class="button-container">
+            <button class="custom-button" onclick="window.location.href='satoru-gojo.html';" title="Satoru Gojo"></button>
+            <button class="custom1-button" onclick="window.location.href='ryomen-sukuna.html';" title="Ryomen Sukuna"></ button>
+            <button class="custom2-button" onclick="window.location.href='kenjaku.html';" title="Kenjaku"></button>
+            <button class="custom3-button" onclick="window.location.href='uraume.html';" title="Uraume"></button>
+            <button class="trailer-button" onclick="window.open('https://youtu.be/9OhV3IWUsxE?si=FL-lKVvvjfHghcj-', '_blank')" title="Trailer"></button>
+            <button class="quiz-button" onclick="window.location.href='homenagemakiratoriyama.html';" title="Akira"></button>
+            <button class="Shibuya-button" onclick="window.location.href='Shibuya.html';" title="Shibuya"></button> 
+            <button class="homenagem-button" onclick="window.location.href='homenagem.html';" title="Homenagem"></button>
+            <button class="video-button" onclick="window.location.href='video.html';" title="Vídeo"></button>
+            <button class="forms-button" onclick="window.location.href='forms.html';" title="Última Página"></button>
+            <button class="creator-button" onclick="window.location.href='index.html';">Voltar para a Página Inicial</button>
+        </div>
+    </nav>
+    <header>
+        <h1>Toji Fushiguro</h1>
+    </header>
+
+    <div id="navbar">
+        <span></span>
+        <div id="barra-pesquisa">
+            <input type="text" id="input-pesquisa" placeholder="Procurar na página">
+            <button id="botao-pesquisa">Procurar</button>
+        </div>
+    </div>
+
+    <div id="conteudo">
+        <h1><strong>Abençoado Por os Céus</strong></h1>
+        <p>
+            Toji Fushiguro é um dos personagens mais intrigantes de Jujutsu Kaisen. Membro da família Fushiguro, ele não possui habilidades malditas naturais, mas é extremamente perigoso devido às suas habilidades físicas excepcionais. Toji é um assassino habilidoso, mestre em combate corpo a corpo e com grande destreza no uso de armas, capaz de derrotar feiticeiros poderosos.
+        </p>
+        <img id="img1" src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2023/05/jujutsu-kaisen-season-2-pv-toji-fushiguro.jpg" alt="Toji Fushiguro">
+        <hr size="6" color="#00ffff" width="100%">
+        <h1><strong>Pós-Morte</strong></h1>
+        <p>
+            A morte de Toji Fushiguro ocorre durante o arco "Incidente de Shibuya", um momento crítico e decisivo na trama de Jujutsu Kaisen. Toji é derrotado por Satoru Gojo, após um confronto intenso, que revela tanto a imensa força de Gojo quanto a habilidade estratégica de Toji.
+        </p>
+        <img id="img1" src="https://preview.redd.it/i-know-hes-the-teenager-hunter-but-tojis-death-always-gets-v0-nx3lzxotr6gc1.jpg?width=640&crop=smart&auto=webp&s=8ef723f20f4cbb197a9c2ed24c1e1b1f586663f2" alt="A Morte de Toji">
+        <hr size="6" color="#00ffff" width="100%">
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+            <iframe src="https://geo.dailymotion.com/player.html?video=x8spkhm"
+              style="width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden; border:none;"
+              allowfullscreen
+              title="Dailymotion Video Player"
+              allow="web-share">
+            </iframe>
+          </div>
+        <div class="sketchfab-embed-wrapper">
+            <iframe 
+                title="Toji Fushiguro - Jujutsu Kaisen" 
+                frameborder="0" 
+                allowfullscreen 
+                mozallowfullscreen="true" 
+                webkitallowfullscreen="true" 
+                allow="autoplay; fullscreen; xr-spatial-tracking" 
+                xr-spatial-tracking 
+                execution-while-out-of-viewport 
+                execution-while-not-rendered 
+                web-share 
+                src="https://sketchfab.com/models/abbe2e8d267547c98de284cf25699f8b/embed"
+                width="600" 
+                height="600">
+            </iframe>
+        </div>
+        <p><a href="https://myanimelist.net/character/175543/Touji_Fushiguro" target="_blank">Databook de Toji</a></p>
+        <hr size="6" color="#00ffff" width="100%">
+
+        <div class="voltar">
+            <footer>
+              <a href="index.html" color="white">Voltar à Página Inicial</a>
+            </footer>
+        </div>
+
+    <script>
+        document.getElementById("botao-pesquisa").addEventListener("click", function() { 
+    // Remove destaques anteriores
+    const elementosDestacados = document.querySelectorAll(".highlight");
+    elementosDestacados.forEach(elemento => {
+        elemento.classList.remove("highlight");
+        elemento.innerHTML = elemento.innerText; // Remove o HTML de destaque anterior
+    });
+
+    // Obtém o termo de pesquisa
+    const termoPesquisa = document.getElementById("input-pesquisa").value.toLowerCase();
+    if (termoPesquisa.trim() === "") {
+        alert("Por favor, insira uma palavra para buscar.");
+        return;
+    }
+
+    // Elementos onde a busca será realizada
+    const todosElementos = document.querySelectorAll("h1, h2, h3, p, a, span");
+    let encontrado = false;
+
+    // Realiza a busca
+    todosElementos.forEach(elemento => {
+        const textoElemento = elemento.innerText.toLowerCase();
+        if (textoElemento.includes(termoPesquisa)) {
+            const regex = new RegExp(`(${termoPesquisa})`, "gi");
+            elemento.innerHTML = elemento.innerHTML.replace(regex, `<span class="highlight">$1</span>`);
+            encontrado = true;
+        }
+    });
+
+    if (encontrado) {
+        // Rola até o primeiro elemento destacado
+        const primeiroDestacado = document.querySelector(".highlight");
+        if (primeiroDestacado) {
+            primeiroDestacado.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+    } else {
+        alert("Palavra não encontrada.");
+    }
+});
+
+// Permite buscar com Enter
+document.getElementById("input-pesquisa").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        document.getElementById("botao-pesquisa").click();
+    }
+});
+
+
+
+        // Função para alternar o menu lateral e ocultar a barra de pesquisa
+        function toggleMenu() {
+            const menu = document.querySelector(".side-menu");
+            const navbar = document.getElementById("navbar");
+            menu.classList.toggle("open");
+
+            if (menu.classList.contains("open")) {
+                navbar.style.opacity = "0"; // Oculta a navbar
+                navbar.style.visibility = "hidden";
+            } else {
+                navbar.style.opacity = "1"; // Reexibe a navbar
+                navbar.style.visibility = "visible";
+            }
+        } 
+    </script>
+</body>
+</html>
