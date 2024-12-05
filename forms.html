@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms - Jujutsu Kaisen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            line-height: 1.6;
+            background-color: #121212; /* Fundo escuro */
+        }
+        header {
+            background-color: rgba(42, 26, 94, 0.8);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #ff3d00; /* Vermelho vibrante */
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(255, 61, 0, 0.7);
+        }
+        form {
+            background-color: rgba(51, 0, 51, 0.8); /* Fundo do formulário */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 30px auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        form label {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        form input, form textarea, form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #1c1c1c;
+            color: white;
+        }
+        form button {
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(23, 0, 235, 0.8));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        form button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(90deg, rgba(255, 61, 0, 0.8), rgba(42, 42, 250, 0.8));
+        }
+        footer {
+            text-align: center;
+            background-color: rgba(42, 26, 94, 0.8);
+            padding: 10px;
+            font-size: 1rem;
+            color: #dcdcdc;
+        }
+        footer a {
+            color: #ff3d00;
+            text-decoration: none;
+        }
+        .menu-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .menu-icon span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: #ff3d00;
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+    .side-menu {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        width: 80%;
+        max-width: 300px;
+        background-color: #1c1c1c;
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: left 0.3s ease;
+        overflow-y: auto; /* Adicionado para rolagem */
+    }
+
+    .side-menu::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .side-menu::-webkit-scrollbar-thumb {
+        background-color: #ff3d00;
+        border-radius: 4px;
+    }
+
+    .side-menu::-webkit-scrollbar-thumb:hover {
+        background-color: #ff5722;
+    }
+
+    .side-menu::-webkit-scrollbar-track {
+        background: #1c1c1c;
+    }
+
+
+        .close-button {
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            align-self: flex-end;
+            margin-bottom: 20px;
+        }
+        .creator-button {
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), rgba(23, 0, 235, 0.8));
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.6);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .creator-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.8);
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .custom-button, .custom1-button, .custom2-button, .custom3-button, .trailer-button, .quiz-button, .forms-button, .Shibuya-button, .video-button, .homenagem-button {
+            width: 120px;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            margin: 10px;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .custom-button { background-image: url('gojo.jpg'); }
+        .custom1-button { background-image: url('sukuna.jpg'); }
+        .custom2-button { background-image: url('kenjaku.jpg'); }
+        .custom3-button { background-image: url('toji.jpeg'); }
+        .trailer-button { background-image: url('trailer.webp'); }
+        .quiz-button { background-image: url('akira.jpg'); }
+        .Shibuya-button { background-image: url('shibuya.webp'); }
+        .video-button { background-image: url('video.jpg'); }
+        .homenagem-button { background-image: url('gojomemory2.png'); }
+        .forms-button { background-image: url('forms.jpg'); }
+        .custom-button:hover, .custom1-button:hover, .custom2-button:hover, .custom3-button:hover, .trailer-button:hover, .quiz-button:hover, .forms-button:hover, .Shibuya-button:hover, .video-button:hover, .homenagem-button:hover {
+            transform: scale(1.1);
+            border-color: #ff3d00;
+        }
+    </style>
+</head>
+<body>
+    <!-- Ícone do menu -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav id="side-menu" class="side-menu">
+        <button class="close-button" onclick="toggleMenu()">×</button>
+        <button class="creator-button" onclick="window.location.href='gegeakutami.html';">Informações sobre o Criador</button>
+        
+        <div class="button-container">
+            <button class="custom-button" onclick="window.location.href='satoru-gojo.html';" title="Satoru Gojo"></button>
+            <button class="custom1-button" onclick="window.location.href='ryomen-sukuna.html';" title="Ryomen Sukuna"></ button>
+            <button class="custom2-button" onclick="window.location.href='kenjaku.html';" title="Kenjaku"></button>
+            <button class="custom3-button" onclick="window.location.href='uraume.html';" title="Uraume"></button>
+            <button class="trailer-button" onclick="window.open('https://youtu.be/9OhV3IWUsxE?si=FL-lKVvvjfHghcj-', '_blank')" title="Trailer"></button>
+            <button class="quiz-button" onclick="window.location.href='homenagemakiratoriyama.html';" title="Akira"></button>
+            <button class="Shibuya-button" onclick="window.location.href='Shibuya.html';" title="Shibuya"></button> 
+            <button class="homenagem-button" onclick="window.location.href='homenagem.html';" title="Homenagem"></button>
+            <button class="video-button" onclick="window.location.href='video.html';" title="Vídeo"></button>
+            <button class="forms-button" onclick="window.location.href='forms.html';" title="Última Página"></button>
+            <button class="creator-button" onclick="window.location.href='index.html';">Voltar para a Página Inicial</button>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Formulário - Jujutsu Kaisen</h1>
+    </header>
+
+    <form  action="send_email.php" method="POST">
+        <label for="name">Seu Nome:</label>
+        <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
+
+        <label for="favorite-character">Quem é seu personagem favorito em *Jujutsu Kaisen*?</label>
+        <select id="favorite-character" name="favorite-character" required>
+            <option value="">Selecione...</option>
+            <option value="Satoru Gojo">Satoru Gojo</option>
+            <option value="Ryomen Sukuna">Ryomen Sukuna</option>
+            <option value="Yuji Itadori">Yuji Itadori</option>
+            <option value="Megumi Fushiguro">Megumi Fushiguro</option>
+            <option value="Nobara Kugisaki">Nobara Kugisaki</option>
+            <option value="Outro">Outro</option>
+        </select>
+
+        <label for="favorite-arc">Qual é seu arco favorito?</label>
+        <select id="favorite-arc" name="favorite-arc" required>
+            <option value="">Selecione...</option>
+            <option value="Arco de Introdução">Arco de Introdução</option>
+            <option value="Arco de Shibuya">Arco de Shibuya</option>
+            <option value="Arco do Incidente da Noite de Kyoto">Arco do Incidente da Noite de Kyoto</option>
+            <option value="Arco da Guerra dos Cem Demônios">Arco da Guerra dos Cem Demônios</option>
+        </select>
+
+        <label for="message">Alguma opinião ou comentário sobre a série?</label>
+        <textarea id="message" name="message" rows="4" placeholder="Digite sua mensagem aqui..."></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <footer>
+        <p>Site feito por um fã de Jujutsu Kaisen | <a href="https://www.viz.com/jujutsu-kaisen">Saiba mais</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("side-menu").classList.toggle("open");
+        }
+    </script>
+</body>
+</html>
